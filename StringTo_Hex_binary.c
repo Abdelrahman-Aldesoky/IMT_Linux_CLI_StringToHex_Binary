@@ -80,8 +80,15 @@ int main(int argc, char *argv[])
         parse_input_string(output_file, input_string, operation_flag);
     }
 
-    if (input_file)  fclose(input_file);
-    if (output_file) fclose(output_file);
+    if (input_file)
+    {
+        fclose(input_file);
+    }
+    if (output_file)
+    {
+        fclose(output_file);
+    }
+
     return 0;
 }
 
@@ -99,7 +106,11 @@ void PrintHelp(void)
 void parse_input_file(FILE *input_file, FILE *output_file, int flag)
 {
     char c = 0;
-    if (!output_file) output_file = fopen("output.txt", "w+");
+    if (!output_file)
+    {
+        output_file = fopen("output.txt", "w+");
+    }
+
     while ((c = fgetc(input_file)) != EOF)
     {
         if (c == '\n')
@@ -172,4 +183,4 @@ void check_errors(short int iflag, short int oflag, short int operation_flag)
         fprintf(stderr, "\nYou can only provide one output file or none. -h for help\n\n");
         exit(1);
     }
-} /*175 lines xD*/
+}
